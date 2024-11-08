@@ -1,0 +1,13 @@
+spring:
+  jpa:
+    open-in-view: true
+    show-sql: true
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  datasource:
+
+    url: jdbc:postgresql://10.10.10.30:5432/equipamento_dev
+    username: api_equipamentos
+    password: "Xadz+CqCb478|VM"
+  h2:
+    console:
+      enabled: false

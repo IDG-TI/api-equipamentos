@@ -18,13 +18,18 @@ public class EquipamentoEntity {
     @Column (name = "equipamento_id")
     private UUID id;
 
+    private String identificacao;
+
     @ManyToOne
     @JoinColumn(name = "tipo_equipamento_id")
     private TipoEquipamentoEntity tipoEquipamento;
 
     private String codigo;
     //Certeza?
-//    private Integer frequenciaCalibracao;
+
+    @ManyToOne
+    @JoinColumn(name = "frequencia_calibracao_equipamento_id")
+   private FrequenciaCalibracaoEntity frequenciaCalibracao;
     private String descricao;
     private String capacidade;
     private String menorValorDivisao;

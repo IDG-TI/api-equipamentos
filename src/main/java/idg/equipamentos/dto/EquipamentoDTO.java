@@ -1,6 +1,7 @@
 package idg.equipamentos.dto;
 
 import idg.equipamentos.entity.EquipamentoEntity;
+import idg.equipamentos.entity.FrequenciaCalibracaoEntity;
 import lombok.Data;
 import org.jetbrains.annotations.NotNull;
 
@@ -11,6 +12,7 @@ import java.util.UUID;
 @Data
 public class EquipamentoDTO {
     private UUID id;
+    private String identificacao;
     private TipoEquipamentoDTO tipoEquipamento;
     private String codigo;
     private String descricao;
@@ -25,14 +27,15 @@ public class EquipamentoDTO {
     private LocalDate dataCadastro;
     private String observacao;
     private SituacaoDTO situacao;
-
+    private FrequenciaCalibracaoDTO frequenciaCalibracao;
 
 
     public static EquipamentoDTO entityToDTO(EquipamentoEntity entity){
         EquipamentoDTO equipamentoDTO = new EquipamentoDTO();
         equipamentoDTO.setId(entity.getId());
+        equipamentoDTO.setIdentificacao(entity.getIdentificacao());
         equipamentoDTO.setTipoEquipamento(TipoEquipamentoDTO.entityToDTO(entity.getTipoEquipamento()));
-        equipamentoDTO.setSituacao(SituacaoDTO.entitytoDTO(entity.getSituacao()));
+        equipamentoDTO.setSituacao(SituacaoDTO.entityToDTO(entity.getSituacao()));
         equipamentoDTO.setCodigo(entity.getCodigo());
         equipamentoDTO.setDescricao(entity.getDescricao());
         equipamentoDTO.setCapacidade(entity.getCapacidade());
@@ -51,8 +54,9 @@ public class EquipamentoDTO {
     public static EquipamentoEntity dtoToEntity(EquipamentoDTO dto){
         EquipamentoEntity equipamentoEntity= new EquipamentoEntity();
         equipamentoEntity.setId(dto.getId());
-//        equipamentoEntity.setTipoEquipamento(TipoEquipamentoDTO.dtoToEntity(dto.getTipoEquipamento()));
-//        equipamentoEntity.setSituacao(SituacaoDTO.dtoToEntity(dto.getSituacao()));
+        equipamentoEntity.setTipoEquipamento(TipoEquipamentoDTO.dtoToEntity(dto.getTipoEquipamento()));
+       equipamentoEntity.setSituacao(SituacaoDTO.dtoToEntity(dto.getSituacao()));
+       equipamentoEntity.setIdentificacao(dto.getIdentificacao());
         equipamentoEntity.setCodigo(dto.getCodigo());
         equipamentoEntity.setDescricao(dto.getDescricao());
         equipamentoEntity.setCapacidade(dto.getCapacidade());

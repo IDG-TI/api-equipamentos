@@ -23,10 +23,12 @@ public class EquipamentoController {
     //   public List<TipoEquipamentoEntity> mostrarTipos(){
 //        return tipoEquipamentoService.buscarTipos();
 //   }
-    @GetMapping ("/find")
+    @GetMapping
     public List<EquipamentoDTO> mostrarTipoEquipamento() {
         return equipamentoService.buscarEquipamentos();
     }
+
+
 
 
 

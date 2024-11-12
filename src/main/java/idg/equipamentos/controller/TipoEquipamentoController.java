@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @CrossOrigin
 @RestController
@@ -18,20 +19,23 @@ public class TipoEquipamentoController {
         this.tipoEquipamentoService = tipoEquipamentoService;
     }
 
-//   public List<TipoEquipamentoEntity> mostrarTipos(){
-//        return tipoEquipamentoService.buscarTipos();
-//   }
-   @GetMapping ("/find")
+   @GetMapping
    public List<TipoEquipamentoDTO> mostrarTipoEquipamento() {
         return tipoEquipamentoService.buscarTipos();
    }
 
-    @PostMapping("/add")
+    @PostMapping
     public TipoEquipamentoDTO addTipo(@RequestBody TipoEquipamentoDTO tipoEquipamentoDTO) {
-        TipoEquipamentoDTO tipoEquipamentoSalvo = tipoEquipamentoService.addTipo(tipoEquipamentoDTO);
-        return tipoEquipamentoSalvo;
+        return tipoEquipamentoService.addTipo(tipoEquipamentoDTO);
     }
-
+    @PutMapping ("/{uuid}")
+    public TipoEquipamentoDTO atualizarItem(@PathVariable UUID uuid, @RequestBody TipoEquipamentoDTO tipoEquipamentoDto){
+        return tipoEquipamentoService.atualizarTipo(uuid, tipoEquipamentoDto);
+    }
+    @DeleteMapping ("/{uuid}")
+    public void delete(@PathVariable UUID uuid){
+        tipoEquipamentoService.excluirTipo(uuid);
+    }
 
 
 }

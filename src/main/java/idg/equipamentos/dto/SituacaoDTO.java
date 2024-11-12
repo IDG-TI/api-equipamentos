@@ -4,6 +4,7 @@ import idg.equipamentos.entity.SituacaoEntity;
 import lombok.Data;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Data
@@ -13,9 +14,9 @@ public class SituacaoDTO {
     private String nome;
 
     // isso add tbm
-    private LocalDate dataCadastro;
+    private LocalDateTime dataCadastro;
 
-    public static SituacaoDTO entitytoDTO(SituacaoEntity entity){
+    public static SituacaoDTO entityToDTO(SituacaoEntity entity){
         SituacaoDTO situacaoDTO = new SituacaoDTO();
         situacaoDTO.setId(entity.getId());
         situacaoDTO.setNome(entity.getNome());
